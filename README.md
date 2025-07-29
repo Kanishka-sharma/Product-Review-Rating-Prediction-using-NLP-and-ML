@@ -2,88 +2,71 @@
 
 ## 📘 Project Overview
 
-This project focuses on building machine learning models capable of predicting product ratings based solely on the written text of user reviews. The goal is to develop a predictive system that analyzes review content and estimates how users rated the product on a scale from 1 to 5.
-
-By applying Natural Language Processing (NLP) techniques and supervised learning models, the project explores how review sentiment and content can be used to infer user satisfaction.
+This project explores predicting Amazon product review ratings (1–5) based solely on review text using NLP and machine learning techniques. The goal is to build and compare models that effectively interpret customer sentiment to estimate satisfaction levels.
 
 ---
 
-## 🎯 Objective
+## 📂 Dataset Summary
 
-- Preprocess and analyze a dataset of product reviews.
-- Train machine learning models to predict product ratings (1–5) based on review text.
-- Evaluate and compare the performance of different models.
-- Justify modeling decisions through experimentation and result interpretation.
-
----
-
-## 📂 Dataset
-
-The dataset used is `dataset.csv`, which contains product reviews collected from Amazon.
-
-### 📄 Format
-
-- CSV (comma-separated)
-
-### 🧾 Columns
+The dataset (`dataset.csv`) contains Amazon product reviews with two columns:
 
 | Column | Description |
 |--------|-------------|
-| `Score` | Rating score (one of: 1, 2, 3, 4, 5) |
-| `Text`  | Textual content of the product review |
+| `Score` | Rating (1 to 5) |
+| `Text`  | Review text |
+
+This dataset is well-suited for sentiment analysis due to its authentic and linguistically diverse content. Challenges include:
+- **Noise**: Sarcasm, typos, and mixed sentiments.
+- **Brief Reviews**: Limited context (e.g., "Good").
+- **Rating Inconsistencies**: Overlap in sentiment across rating classes.
+- **Class Imbalance**: 5-star reviews dominate (over 31k), while 1- and 2-star are underrepresented (~4k and ~3k), risking bias.
+
+Despite these issues, the dataset remains valuable for learning sentiment-driven classification patterns.
 
 ---
 
-## ⚙️ Approach
+## 🧹 Data Preparation Highlights
 
-1. **Text Preprocessing**
-   - Tokenization
-   - Stop word removal
-   - Lemmatization
-   - Text normalization (lowercasing, punctuation removal, etc.)
-
-2. **Feature Extraction**
-   - TF-IDF vectorization
-   - Word embeddings (optional)
-
-3. **Model Training**
-   - Baseline models (Logistic Regression, Naive Bayes)
-   - Advanced models (Random Forest, SVM, or LSTM/BERT for experimentation)
-
-4. **Evaluation**
-   - Metrics: Accuracy, F1-Score, Confusion Matrix
-   - Cross-validation and model tuning
+- **Cleaning**: Lowercasing, punctuation removal, tokenization, stopword removal, and lemmatization.
+- **Negation Handling**: Combining terms like "not good" into "not_good" to preserve sentiment.
+- **Missing & Short Reviews**: Removed or imputed for consistency.
+- **Label Encoding**: Ratings converted to numerical labels.
+- **Class Imbalance**: Handled using stratified undersampling and class weights.
+- **Train-Test Split**: 80-20 with stratified sampling for balanced representation.
 
 ---
 
-## 📦 Deliverables
+## 🤖 Models & Representations
 
-- A Python implementation that:
-  - Trains machine learning models
-  - Predicts user ratings from review text
-- A report detailing:
-  - Model selection rationale
-  - Preprocessing steps
-  - Evaluation metrics and results
-
----
-
-## 🛠️ Tools & Libraries
-
-- Python
-- Pandas, NumPy
-- scikit-learn
-- NLTK / spaCy
-- Matplotlib / Seaborn
-- Jupyter Notebook or VS Code
+- **TF-IDF**: Used with Naive Bayes and KNN.
+- **Word Embeddings**: Used with CNN and LSTM for contextual learning.
+  
+### Algorithms:
+- **Naive Bayes**: Efficient baseline for sparse TF-IDF data.
+- **KNN**: Distance-based, interpretable but computationally expensive.
+- **CNN**: Captures local patterns and performs well on short reviews.
+- **LSTM**: Models long-term dependencies; effective for longer text.
 
 ---
 
-## 💡 Insights
+## 📊 Experimental Results (Accuracy)
 
-This project highlights how NLP and machine learning can be used to extract valuable information from unstructured textual data. By mapping the sentiment and language of user reviews to a numerical score, it's possible to automate rating predictions and support applications like review moderation, customer feedback analysis, and product recommendation systems.
+| Model        | Accuracy | Highlights |
+|--------------|----------|------------|
+| Naive Bayes  | 60%      | Strong baseline, struggles with mixed sentiments. |
+| KNN (k=9)     | 52%      | High recall for class 5, but weak for classes 2 & 4. |
+| CNN          | 67%      | Best performer, excels with structured and short reviews. |
+| LSTM         | 62%      | Handles long text well, but imbalanced precision on minority classes. |
 
 ---
 
+## 💬 Discussion
+
+- **Naive Bayes** offers a fast and interpretable baseline but is limited by its simplistic assumptions.
+- **KNN** underperforms due to high sensitivity to class imbalance and sparsity.
+- **CNN** outperforms others by effectively capturing key patterns in short texts.
+- **LSTM**, while powerful, provides limited additional value in this setup due to shorter review lengths and data imbalance.
+
+**Overall**, CNN strikes the best balance between accuracy and complexity. Future improvements could include ensemble approaches or leveraging pre-trained language models (e.g., BERT).
 
 
