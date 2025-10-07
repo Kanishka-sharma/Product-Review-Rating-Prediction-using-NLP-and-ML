@@ -1,12 +1,12 @@
-# ⭐ Product Review Rating Prediction using NLP and Machine Learning
+# Product Review Rating Prediction using NLP and Machine Learning
 
-## 📘 Project Overview
+## Project Overview
 
 This project explores predicting Amazon product review ratings (1–5) based solely on review text using NLP and machine learning techniques. The goal is to build and compare models that effectively interpret customer sentiment to estimate satisfaction levels.
 
 ---
 
-## 📂 Dataset Summary
+## Dataset Summary
 
 The dataset (`dataset.csv`) contains Amazon product reviews with two columns:
 
@@ -25,7 +25,7 @@ Despite these issues, the dataset remains valuable for learning sentiment-driven
 
 ---
 
-## 🧹 Data Preparation Highlights
+## Data Preparation Highlights
 
 - **Cleaning**: Lowercasing, punctuation removal, tokenization, stopword removal, and lemmatization.
 - **Negation Handling**: Combining terms like "not good" into "not_good" to preserve sentiment.
@@ -36,7 +36,7 @@ Despite these issues, the dataset remains valuable for learning sentiment-driven
 
 ---
 
-## 🤖 Models & Representations
+## Models & Representations
 
 - **TF-IDF**: Used with Naive Bayes and KNN.
 - **Word Embeddings**: Used with CNN and LSTM for contextual learning.
@@ -49,7 +49,7 @@ Despite these issues, the dataset remains valuable for learning sentiment-driven
 
 ---
 
-## 📊 Experimental Results (Accuracy)
+## Experimental Results (Accuracy)
 
 | Model        | Accuracy | Highlights |
 |--------------|----------|------------|
@@ -60,7 +60,7 @@ Despite these issues, the dataset remains valuable for learning sentiment-driven
 
 ---
 
-## 💬 Discussion
+## Discussion
 
 - **Naive Bayes** offers a fast and interpretable baseline but is limited by its simplistic assumptions.
 - **KNN** underperforms due to high sensitivity to class imbalance and sparsity.
