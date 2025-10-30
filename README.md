@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project explores predicting Amazon product review ratings (1–5) based solely on review text using NLP and machine learning techniques. The goal is to build and compare models that effectively interpret customer sentiment to estimate satisfaction levels.
+This project explores predicting Amazon product review ratings (1-5) based solely on review text using NLP and machine learning techniques. The goal is to build and compare models that effectively interpret customer sentiment to estimate satisfaction levels.
 
 ---
 
